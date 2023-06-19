@@ -6,9 +6,8 @@ It demonstrates the process of preparing and transforming data for further analy
 This script pulls daily temperature statistics from [open-meteo API](https://open-meteo.com/en/docs) and stores them to a local directory. 
 
 ## Setting Up
+After cloning the repository,
 ```bash
-# clone the repository
-
 # change the working directory
 cd data_wrangling_sample
 
