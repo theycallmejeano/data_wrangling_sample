@@ -17,7 +17,6 @@ class WrangleData:
         Load data from the API and transform to a dataframe
 
         Returns
-        ---
             data - dataframe of data from the API
         """
         # get API response
@@ -68,7 +67,7 @@ class WrangleData:
         ).sort_values(["date", "indicator"], ignore_index=True)
 
         # store as dates
-        df_pivot['date'] = pd.to_datetime(df_pivot['date']).dt.date
+        df_pivot['date'] = pd.to_datetime(df_pivot['date'])
 
         return df_pivot
 
@@ -78,7 +77,6 @@ class WrangleData:
         Export data to the required location
 
         Args
-        ----
             path - file path
             df - dataframe for export
             storage- storage type
