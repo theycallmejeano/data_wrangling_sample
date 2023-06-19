@@ -55,7 +55,7 @@ def main():
                 wrangle.export_data(merged_df, 'data/merged_data.csv', args.save)
             else:
                 for loc in LOCATION_NAMES:
-                    loc_df = merged_df[merged_df['location'] == loc]
+                    loc_df = merged_df[merged_df['location'] == loc.lower()]
                     wrangle.export_data(loc_df, f'data/{loc.lower()}.csv', args.save)
         else:
             raise ValueError('Data validation failed')

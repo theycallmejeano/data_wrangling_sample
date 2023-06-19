@@ -2,6 +2,7 @@
 import json
 import os
 import datetime
+from typing import Tuple, Optional
 import requests
 from dotenv import load_dotenv
 from geopy.geocoders import Nominatim
@@ -17,9 +18,16 @@ URL_TEMPLATE = os.environ['URL_TEMPLATE']
 
 
 # format the URL
-def format_url(lat, long):
+def format_url(lat:float, long:float) -> str:
     """
-    Format the URL
+    Format the URL for an API request
+
+    Args
+        lat: Latitude of the location
+        long: Longitude of the location
+
+    Returns
+        str: Formatted URL
 
     """
     max_date = (datetime.datetime.now() - datetime.timedelta(days=5)).strftime(format='%Y-%m-%d')
@@ -32,17 +40,15 @@ def format_url(lat, long):
     return url
 
 # get coords
-def get_coords(location:str):
+def get_coords(location: str) -> Tuple[float, float]:
     """
     Get the coordinates of a given location to 2 decimal places
 
-    Args
-    ----
-        location, str, name of the location
+    Args:
+        location: Name of the location
 
-    Returns
-    ----
-        latitude, longitude, the latitude and longitude of the location
+    Returns:
+        Tuple[float, float]: Latitude and longitude of the location
     """
     # calling the Nominatim tool
     loc = Nominatim(user_agent="GetLoc")
@@ -58,16 +64,14 @@ def get_coords(location:str):
 
 
 # get API response
-def get_api_response(url: str) -> requests.Response:
+def get_api_response(url: str) -> Optional[requests.Response]:
     """
     Send a GET request for a given URL
 
     Args
-    ----
         url (str): The URL to send the request to
 
     Returns
-    -----
         response: API Response
     """
     session = requests.Session()
