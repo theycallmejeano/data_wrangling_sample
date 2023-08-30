@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "A simple data wrangling pipeline"
 authors = ["theycallmejeano <jeangithae@outlook.com>"]
 readme = "README.md"
-packages = [{include = "data_wrangling_sample"}]
+#packages = [{include = "data_wrangling"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
